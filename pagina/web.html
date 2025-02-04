@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biophysics Introduction</title>
+    <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+
+        header, footer {
+            background-color: #0078d4;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1.2rem;
+        }
+
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            max-width: 1200px;
+            width: 100%;
+            gap: 20px;
+            padding: 20px;
+            margin: auto;
+        }
+
+        .introduction {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .blocks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .block {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .block img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .block h3 {
+            margin: 0;
+            padding: 10px;
+            background-color: #0078d4;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .block p {
+            padding: 0px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .block:hover h3 {
+            background-color: #63a7e171;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section.active {
+            display: block;
+        }
+
+
+    
+        /* Contenedor principal: Alinea la sección y el índice */
+.main-container {
+    display: flex; /* Alinea la sección y el índice en fila */
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor principal */
+    padding: 20px;
+    gap: 20px; /* Espaciado entre el contenido y la barra lateral */
+}
+
+/* Contenedor de la sección (contenido principal) */
+.content-container {
+    flex: 3; /* Ocupa el 75% del espacio */
+    display: flex;
+    flex-direction: column; /* Mantiene el contenido interno en columnas */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Barra lateral (índice) */
+.sidebar {
+    flex: 1; /* Ocupa el 25% del espacio */
+    position: sticky; /* Se mantiene visible al hacer scroll */
+    top: 20px; /* Espacio desde la parte superior */
+    background-color: #2d89cfd0;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    height: fit-content; /* Ajusta la altura al contenido */
+}
+
+/* Estilo para la lista en la barra lateral */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar ul li a.active {
+    background-color: rgba(86, 33, 33, 0.253);
+    font-weight: bold;
+    color: white;
+}
+
+
+/* Estilo del contenedor del título "INDEX" y botón */
+.sidebar-header {
+    display: flex; /* Alinea el título y el botón en fila */
+    justify-content: space-between; /* Título a la izquierda, botón a la derecha */
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Estilo del botón "Volver arriba" */
+.back-to-top {
+    background-color: white;
+    color: #0078d4;
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: #e6f7ff;
+    color: #005ea6;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Biophysics Course</h1>
+    </header>
+    <div class="container">
+        <div class="introduction">
+            <h1>Introduction to Biophysics</h1>
+            <p>Biophysics is an interdisciplinary science that applies approaches and methods traditionally used in physics to study biological phenomena. Biophysics covers all scales of biological organization, from molecular to organismic and populations. Biophysical research shares significant overlap with biochemistry, molecular biology, physical chemistry, physiology, nanotechnology, bioengineering, computational biology, biomechanics, developmental biology and systems biology.
+                </p>
+            <p>The term biophysics was originally introduced by Karl Pearson in 1892.</p>
+            <p>Molecular biophysics typically addresses biological questions similar to those in biochemistry and molecular biology, seeking to find the physical underpinnings of biomolecular phenomena. Scientists in this field conduct research concerned with understanding the interactions between the various systems of a cell, including the interactions between DNA, RNA and protein biosynthesis, as well as how these interactions are regulated. A great variety of techniques are used to answer these questions.</p>
+            <p>In addition to traditional (i.e. molecular and cellular) biophysical topics like structural biology or enzyme kinetics, modern biophysics encompasses an extraordinarily broad range of research, from bioelectronics to quantum biology involving both experimental and theoretical tools. It is becoming increasingly common for biophysicists to apply the models and experimental techniques derived from physics, as well as mathematics and statistics, to larger systems such as tissues, organs, populations and ecosystems. Biophysical models are used extensively in the study of electrical conduction in single neurons, as well as neural circuit analysis in both tissue and whole brain.</p>
+        </div>
+        <div class="blocks">
+            <div class="block" onclick="navigateToSection('knot-theory')">
+                <img src="gifs/Knot_Unfolding.gif" alt="Knot Theory">
+                <h3>Knot Theory</h3>
+                <p>Knot theory is a branch of topology that studies the mathematical properties of knots and links, focusing on how they can be classified, manipulated, and transformed without cutting or breaking.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('stochastic-analysis')">
+                <img src="gifs/Brownian_motion_large.gif" alt="Stochastic Analysis">
+                <h3>Stochastic Analysis</h3>
+                <p>Stochastic analysis is the study of systems influenced by random processes, often using tools from probability theory to analyze and model phenomena in fields like finance, physics, and biology where uncertainty and randomness play a crucial role.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('gauge-theory')">
+                <img src="gifs/ElectronAndPositronOrbitInBField.gif" alt="Gauge Theory">
+                <h3>Gauge Theory</h3>
+                <p>Gauge theory is a framework in physics and mathematics that describes the behavior of fields and forces through symmetries and transformations, particularly in the context of fundamental interactions like electromagnetism and the strong and weak nuclear forces.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('fractal-geometry')">
+                <img src="gifs/Karperien_Strange_Attractor_200.gif" alt="Fractal Geometry">
+                <h3>Fractal Geometry</h3>
+                <p>Fractal geometry studies complex structures that exhibit self-similarity at different scales, providing a way to understand irregular and fragmented shapes found in nature, such as coastlines or clouds.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('elliptic-functions')">
+                <img src="gifs/weierstrass_elliptic_function_zoomed_out.gif" alt="Elliptic functions">
+                <h3>Elliptic functions</h3>
+                <p>Elliptic functions are complex functions that are periodic in two directions, extending the concept of trigonometric functions and playing a key role in number theory and the study of integrable systems.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('chaos-theory')">
+                <img src="gifs/Demonstrating_Chaos_with_a_Double_Pendulum.gif" alt="Chaos Theory">
+                <h3>Chaos Theory</h3>
+                <p>Chaos theory explores the behavior of dynamic systems that are highly sensitive to initial conditions, often leading to unpredictable and complex outcomes despite being governed by deterministic rules.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('graph-theory')">
+                <img src="gifs/giphy.gif" alt="Graph Theory">
+                <h3>Graph Theory</h3>
+                <p>Graph theory is a branch of mathematics that studies the relationships between objects represented as nodes connected by edges, and is used in various fields such as computer science, biology, and social network analysis.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('differential-topology')">
+                <img src="gifs/circbunt.gif" alt="Differential Topology">
+                <h3>Differential Topology</h3>
+                <p>Differential topology focuses on the properties of smooth manifolds, studying how they can be transformed and classified, particularly with respect to their differentiable structures.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('algebraic-topology')">
+                <img src="gifs/0_QTi3R15bwmyRzodV.gif" alt="Algebraic Topology">
+                <h3>Algebraic Topology</h3>
+                <p>Algebraic topology uses algebraic methods to study topological spaces, focusing on concepts such as homology and fundamental groups to understand the shapes and connectivity of spaces.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('statistical-mechanics')">
+                <img src="gifs/Ising_quench_b10.gif" alt="Statistical mechanics">
+                <h3>Statistical mechanics</h3>
+                <p>Statistical mechanics bridges the microscopic behavior of individual particles with the macroscopic properties of materials, providing insights into thermodynamics, phase transitions, and the behavior of gases and liquids.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('fluid-dynamics')">
+                <img src="gifs/pajaro.gif" alt="Fluid dynamics">
+                <h3>Fluid dynamics</h3>
+                <p>Fluid mechanics is the study of how fluids (liquids and gases) behave when at rest and in motion, involving principles such as viscosity, pressure, and flow dynamics.</p>
+            </div>
+            <div class="block" onclick="navigateToSection('quantum-mechanics')">
+                <img src="gifs/quantum.gif" alt="Quantum mechanics">
+                <h3>Quantum mechanics</h3>
+                <p>Quantum mechanics is the branch of physics that deals with phenomena at the atomic and subatomic levels, where particles exhibit wave-particle duality, and uncertainty plays a fundamental role in the system's behavior.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('algebraic-structures')">
+                <img src="gifs/lorentz_group.gif" alt="Algebraic Structures">
+                <h3>Algebraic Structures</h3>
+                <p>A mathematical frameworks consisting of sets equipped with operations that satisfy specific axioms, such as groups, rings, and fields, which provide foundational tools for understanding symmetry, computation, and abstract relationships across diverse areas of mathematics and science.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('category-theory')">
+                <img src="imagenes/Category-theoretic-approach-to-social-choice-theory-IMD.png" alt="Category Theory">
+                <h3>Category Theory</h3>
+                <p>Category theory is a branch of mathematics that studies abstract structures and relationships between them through objects and morphisms, offering a unifying language to connect and generalize concepts across algebra, topology, and computer science.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('string-theory')">
+                <img src="gifs/TrZW.gif" alt="String Theory">
+                <h3>String Theory</h3>
+                <p>String theory is a theoretical framework in physics that posits that the fundamental constituents of the universe are one-dimensional "strings" whose vibrations determine particle properties, aiming to unify quantum mechanics and general relativity into a single coherent model.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('omics')">
+                <img src="gifs/omics.gif" alt="Omics">
+                <h3>Omics</h3>
+                <p>Omics refers to a collective field of study focused on the comprehensive analysis of biological molecules, such as genomics, proteomics, and metabolomics, aiming to understand the structure, function, and dynamics of biological systems at a holistic level.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('dynamical-systems')">
+                <img src="gifs/dynamical systems.gif" alt="Dynamical Systems">
+                <h3>Dynamical Systems</h3>
+                <p>Dynamical systems are mathematical models that describe how points in a given space evolve over time according to deterministic or stochastic rules, providing insights into phenomena ranging from planetary motion to population dynamics.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('measure-theory')">
+                <img src="gifs/measure.gif" alt="Measure Theory">
+                <h3>Measure Theory</h3>
+                <p>Measure theory is a branch of mathematics that investigates ways to assign consistent sizes or measures to sets, including those with infinite or irregular properties, forming the foundation for integration and probability theory.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('eukaryote')">
+                <img src="gifs/eukarya.gif" alt="Eukaryote">
+                <h3>Eukaryote</h3>
+                <p>The biophysics of eukaryotes explores the physical principles governing cellular processes and structures, such as membrane dynamics, cytoskeletal mechanics, and intracellular transport, in organisms with complex, membrane-bound organelles.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('prokaryote')">
+                <img src="gifs/prokarya.gif" alt="Prokaryote">
+                <h3>Prokaryote</h3>
+                <p>The biophysics of prokaryotes examines the molecular and physical mechanisms underlying cellular functions, including energy generation, motility, and genetic regulation, in unicellular organisms without membrane-bound organelles.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('viruses')">
+                <img src="gifs/viruses.gif" alt="Viruses">
+                <h3>Viruses</h3>
+                <p>The biophysics of viruses investigates the structural, mechanical, and functional properties of viral particles, focusing on processes like host-cell entry, genome packaging, and replication, as well as their interactions with the immune system.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('carcinogenesis')">
+                <img src="gifs/cancer.gif" alt="Carcinogenesis">
+                <h3>Carcinogenesis</h3>
+                <p>Carcinogenesis is the complex biological process by which normal cells transform into cancerous cells, involving genetic mutations, epigenetic alterations, and dysregulation of cellular growth and survival pathways.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('general-biology')">
+                <img src="gifs/biologyy.gif" alt="General Biology">
+                <h3>General Biology</h3>
+                <p>General biology is the broad scientific study of living organisms, encompassing their structure, function, evolution, behavior, and interactions with their environments across all levels of organization.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('biochemistry')">
+                <img src="gifs/biochemistry.gif" alt="Biochemistry">
+                <h3>Biochemistry</h3>
+                <p>Biochemistry is the study of the chemical processes and substances that occur within living organisms, focusing on the molecular basis of life, including enzymatic reactions, metabolism, and biomolecular structures.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('functional-analysis')">
+                <img src="gifs/functional analysis.gif" alt="Functional Analysis">
+                <h3>Functional Analysis</h3>
+                <p>Functional analysis is a branch of mathematics that studies vector spaces and operators acting upon them, particularly in infinite-dimensional contexts, providing foundational tools for understanding quantum mechanics, partial differential equations, and more.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('spectral-theory')">
+                <img src="gifs/spectral theory.gif" alt="Spectral Theory">
+                <h3>Spectral Theory</h3>
+                <p>Spectral theory is a mathematical field that examines the spectrum of linear operators, including eigenvalues and eigenvectors, offering deep insights into problems in quantum mechanics, signal processing, and stability analysis.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('differential-geometry')">
+                <img src="gifs/differential geometry.gif" alt="Differential Geometry">
+                <h3>Differential Geometry</h3>
+                <p>Differential geometry explores the properties of curves, surfaces, and higher-dimensional manifolds using calculus and linear algebra, serving as a cornerstone for modern physics, particularly general relativity and gauge theories.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('spinor-theory')">
+                <img src="gifs/spinor3.gif" alt="Spinor Theory">
+                <h3>Spinor Theory</h3>
+                <p>Spinor theory investigates mathematical entities that extend the concept of vectors, offering a framework for understanding fundamental symmetries and behaviors in quantum mechanics, relativity, and particle physics.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('twistor-theory')">
+                <img src="gifs/Twistor theory.gif" alt="Twistor Theory">
+                <h3>Twistor Theory</h3>
+                <p>Twistor theory is a geometric framework introduced by Roger Penrose, aiming to unify spacetime and quantum theory by representing physical fields and spacetime structures as entities in a complex projective space.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('representation-theory')">
+                <img src="gifs/representation theory.gif" alt="Representation Theory">
+                <h3>Representation Theory</h3>
+                <p>Representation theory studies abstract algebraic structures, such as groups and algebras, by expressing them as linear transformations of vector spaces, bridging gaps between algebra, geometry, and physics.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('differential-equations')">
+                <img src="gifs/differential equations.gif" alt="Differential Equations">
+                <h3>Differential Equations</h3>
+                <p>Differential equations describe relationships involving rates of change, capturing dynamic systems in mathematics, physics, and engineering, from fluid dynamics to population modeling.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('biophotonics')">
+                <img src="gifs/biophotonics.gif" alt="Biophotonics">
+                <h3>Biophotonics</h3>
+                <p>Biophotonics is the interdisciplinary field that explores the interaction of light with biological systems, developing technologies for imaging, diagnostics, and therapies at cellular and molecular levels.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('biomaterials')">
+                <img src="gifs/biomaterial.gif" alt="Biomaterials">
+                <h3>Biomaterials</h3>
+                <p>Biomaterials are substances engineered to interact with biological systems for medical purposes, such as tissue regeneration, prosthetics, and drug delivery, blending materials science with biology and medicine.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('bioinformatics-and-computational-biology')">
+                <img src="gifs/computational.gif" alt="Bioinformatics and Computational Biology">
+                <h3>Bioinformatics and Computational Biology</h3>
+                <p>Bioinformatics and computational biology leverage computational tools and algorithms to analyze biological data, such as genomes and protein structures, enabling discoveries in genetics, evolution, and personalized medicine.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('biomechanics')">
+                <img src="gifs/biomechanics.gif" alt="Biomechanics">
+                <h3>Biomechanics</h3>
+                <p>Biomechanics is the study of the mechanics of biological systems, examining forces and motions in organisms to understand processes like locomotion, tissue deformation, and cardiovascular dynamics.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('micro-and-nanobioengineering')">
+                <img src="gifs/nanobioeng.gif" alt="Micro and Nanobioengineering">
+                <h3>Micro and Nanobioengineering</h3>
+                <p>Micro and nanobioengineering focuses on designing and fabricating devices and materials at microscopic and nanoscopic scales, enabling innovations in diagnostics, drug delivery, and cellular manipulation.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('differential-forms')">
+                <img src="gifs/differential forms.gif" alt="Differential Forms">
+                <h3>Differential Forms</h3>
+                <p>Differential forms provide a powerful mathematical framework for studying calculus on manifolds, generalizing concepts like gradients, curls, and divergence. They are central to fields like geometry, physics, and differential topology, offering a compact way to express integrals and transformations independent of coordinate systems. Their elegance lies in their ability to unify and extend Stokes' theorem across various dimensions.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('tensor-calculus')">
+                <img src="gifs/tensor_bubble_plot.gif" alt="Tensor Calculus">
+                <h3>Tensor Calculus</h3>
+                <p>Tensor calculus is a mathematical tool used to study quantities that transform systematically under coordinate changes. It is crucial in fields like differential geometry and general relativity, where tensors describe curvature, forces, and other physical phenomena. By generalizing vectors and matrices to higher dimensions, tensor calculus provides a versatile language to model and solve problems involving multidimensional spaces.</p>
+            </div>
+
+            <div class="block" onclick="navigateToSection('complex-analysis')">
+                <img src="gifs/complex analysis2.gif" alt="Complex Analysis">
+                <h3>Complex Analysis</h3>
+                <p>Complex analysis explores the behavior of functions defined on the complex plane. It studies analytic (holomorphic) functions, which are infinitely differentiable and obey the Cauchy-Riemann equations. This field is renowned for its deep theoretical insights and practical applications, from evaluating real integrals to solving problems in physics, engineering, and number theory. Key concepts include contour integration, residue theory, and conformal mappings.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        2025 Marc Piqué Fàbregas. All Rights Reserved.
+    </footer>
+
+    <!-- Section Details -->  
+    <div id="chaos-theory" class="section">
+        <h2>Chaos Theory</h2>
+        <p>Detailed information about Gauge Theory...</p>
+    </div>
+
+    <div id="knot-theory" class="section">
+        <div class="main-container">
+            <div class="content-container">
+                    <h2>Knot Theory</h2>
+
+                <section id="knots-and-links">
+                    <h3>Knots and Links</h3>
+                <p>A knot is an smooth embedding of the circle (\(S^1\)) into three-dimensional Euclidean space (\(\mathbb{R}^3\)), or the 3-sphere (\(S^3\)), since the 3-sphere is compact. Two knots are defined to be equivalent if there is an ambient isotopy between them.</p>
+                
+                \[
+                f: S^1 \hookrightarrow S^3 \quad \text{(or \( \mathbb{R}^3 \))},
+                \]
+
+                <p>where \( f \) is a continuous and differentiable function, and the symbol \( \hookrightarrow \) denotes an embedding.
+                </p>
+
+                <p>Two knots \( f, g: S^1 \hookrightarrow S^3 \) are equivalent if there exists an ambient isotopy \( H: S^3 \times [0,1] \to S^3 \) such that: </p>
+
+                \[
+                H(x, 0) = x \quad \text{and} \quad H(f(S^1), 1) = g(S^1),
+                \]
+
+                <p>i.e., \( H \) deforms the ambient space \( S^3 \) continuously, transforming the knot \( f(S^1) \) into the knot \( g(S^1) \) without breaking or cutting.
+                </p>
+
+                <p>We will not go into much more detail, as these topics are explored further in an introductory course on Algebraic Topology.
+                </p>
+                <p>In mathematical knot theory, a <strong>link</strong> is a collection of disjoint knots, i.e., a collection of embeddings \( f_i: S^1 \hookrightarrow S^3 \) for \( i = 1, 2, \ldots, n \), such that the images \( f_i(S^1) \) do not intersect for \( i \neq j \). These components may, however, be <strong>linked</strong> or <strong>knotted</strong> together. A <strong>knot</strong> is a special case of a link consisting of a single component. Links and knots are studied in a branch of mathematics called knot theory.
+                    </p>
+                    <p>Implicit in this definition is the existence of a trivial reference link, commonly called the <strong>unlink</strong>, which consists of a collection of unknots that are pairwise unlinked. However, the term "link" is also sometimes used in contexts where there is no defined notion of a trivial link.
+                    
+                    For example, a co-dimension 2 link in 3-dimensional space is a subspace of \( \mathbb{R}^3 \) (or often the 3-sphere \( S^3 \)) whose connected components are homeomorphic to \( S^1 \). That is, a link \( L \) in \( \mathbb{R}^3 \) or \( S^3 \) is a subset
+                    \[
+                    L = \bigsqcup_{i=1}^n f_i(S^1),
+                    \]
+                    where \( \bigsqcup \) denotes a disjoint union, and each \( f_i \) is an embedding of the circle \( S^1 \).
+                    
+                    <p>The simplest nontrivial example of a link with more than one component is the <strong>Hopf link</strong>, which consists of two circles (or unknots) linked together exactly once. In mathematical terms, the linking number of the two components is \( \operatorname{Link}(f_1(S^1), f_2(S^1)) = 1 \).
+                    </p>
+                    <p>Another notable example is the <strong>Borromean rings</strong>, a link consisting of three circles. In this case, no two circles are directly linked, but the three components are collectively linked. The Borromean rings form a <strong>Brunnian link</strong>, meaning that removing any one component results in an unlink. Furthermore, the Borromean rings are the simplest example of such a Brunnian link.            
+                </p>
+
+                        <h3>Generalizations</h3>
+                <p>The notion of a <strong>link</strong> can be generalized in various ways. These generalizations are presented here only as a curiosity, and we will not go into detail.</p>
+                
+                <h4>General manifolds</h4>
+                <p>The term <strong>link</strong> is sometimes used to describe any submanifold of the sphere \( S^n \) that is diffeomorphic to a disjoint union of a finite number of spheres \( S^j \).</p>
+                
+                <p>In full generality, the word <strong>link</strong> is essentially the same as the word <strong>knot</strong>. Consider a submanifold \( M \) of a manifold \( N \), where \( M \) is trivially embedded in \( N \). A non-trivial embedding of \( M \) in \( N \) (non-trivial in the sense that it is not isotopic to the trivial embedding) can be classified as follows:</p>
+                <ul>
+                    <li>If \( M \) is disconnected, the embedding is called a <strong>link</strong> (or said to be linked).</li>
+                    <li>If \( M \) is connected, the embedding is called a <strong>knot</strong>.</li>
+                </ul>
+                
+                <h4>Tangles, string links, and braids</h4>
+                <p>In addition to 1-dimensional links (defined as embeddings of circles), it is often useful to consider embedded intervals (or strands), particularly in braid theory. This leads to the notion of a <strong>tangle</strong>.</p>
+                
+                <p>Most generally, a <strong>tangle</strong> is an embedding 
+                \[
+                T: X \to \mathbb{R}^2 \times I,
+                \]
+                where \( X \) is a smooth, compact 1-manifold with boundary \( (X, \partial X) \), and \( I = [0, 1] \). The boundary \( T(\partial X) \) is embedded in 
+                \[
+                \mathbb{R} \times \{0, 1\} \quad (\{0, 1\} = \partial I).
+                \]
+                The type of a tangle is determined by the manifold \( X \) together with a fixed embedding of \( \partial X \).</p>
+                
+                <p>For further details, see topics such as <a href="https://en.wikipedia.org/wiki/Tangle_(mathematics)" target="_blank">Tangle (mathematics)</a>.</p>
+
+                <p>
+                    Although explored in greater depth in an <a href="#" onclick="navigateToSection('algebraic-topology')">Algebraic Topology</a> course, a cobordism between manifolds 
+                    \( M \) and \( N \) is a compact manifold \( W \) whose boundary is the disjoint union of \( M \) and \( N \), expressed as:
+                </p>
+                <p>
+                    \[
+                    \partial W = M \sqcup N.
+                    \]
+
+                    <img src="imagenes/cobord.png" alt="Cobordism" style="width: 200px; display: block; margin: 0 auto;">
+            </section>
+
+                    <section id="knot-diagrams">
+                    <h3>Knot diagrams</h3>
+
+                    <p>
+                        To study knots, it is common to use their 
+                        <strong>projections</strong> onto a plane, which are known as <em>knot diagrams</em>.
+                    </p>
+                    <p>
+                        A <strong>knot diagram</strong> is a two-dimensional representation of a knot 
+                        where over-crossings and under-crossings are explicitly indicated. These crossings 
+                        are depicted using breaks in the curve, showing which strand is "on top" and which is "below." 
+                        Mathematically, the projection is achieved by mapping the knot in \( \mathbb{R}^3 \) to \( \mathbb{R}^2 \). 
+                    </p>
+                    <p>
+                        Formally, if \( K \) is a knot in \( \mathbb{R}^3 \), its diagram is a projection:
+                        \[
+                        \pi: K \to \mathbb{R}^2,
+                        \]
+                        where crossings are marked to distinguish the over-strand and the under-strand.
+                    </p>
+                    <p>
+                        Knot diagrams are crucial because they simplify the study of knots, allowing mathematicians 
+                        to work in two dimensions while preserving the essential properties of the knot.
+                    </p>
+
+                    <img src="imagenes/Knot-diagrams-of-the-trivial-knot-0-1-1-the-trefoil-knot-3-1-1-the-figure-eight.png" alt="Cobordism" style="width: 500px; display: block; margin: 0 auto;">
+                
+
+                    <h4>Reidemeister moves</h4>
+
+                    <p>
+                        The <strong>Reidemeister moves</strong> are a set of three operations that can be applied 
+                        to knot diagrams. They allow transformations of one diagram into another while preserving 
+                        the underlying topology of the knot. These moves are fundamental in knot theory because 
+                        they describe how different diagrams can represent the same knot.
+                    </p>
+                    <p>
+                        The three Reidemeister moves are:
+                    </p>
+                    <ol>
+                        <li>
+                            <strong>Type I:</strong> Adding or removing a twist in the strand (see in the figure).
+                        </li>
+                        <li>
+                            <strong>Type II:</strong> Adding or removing two strands that cross over each other (see in the figure).
+                        </li>
+                        <li>
+                            <strong>Type III:</strong> Sliding one strand over a crossing of two other strands (see in the figure).
+                        </li>
+                    </ol>
+                    <p>
+                        Any two diagrams of the same knot can be related to each other through a finite sequence 
+                        of these moves. Therefore, the Reidemeister moves provide a foundation for proving 
+                        that two knots are equivalent or distinct.
+                    </p>
+
+                    <img src="imagenes/reidem.png" alt="Cobordism" style="width: 500px; display: block; margin: 0 auto;">
+
+                </section>
+
+                    <section id="knot-invariants">
+                    <h3>Knot invariants</h3>
+
+                    <p>
+                        In the mathematical field of <strong>knot theory</strong>, a <em>knot invariant</em> is a property 
+                        or quantity associated with a knot that remains unchanged under any deformation of the knot. 
+                        These deformations include the application of the <strong>Reidemeister moves</strong>, 
+                        which are the fundamental operations used to transform knot diagrams without changing the topology 
+                        of the knot.
+                    </p>
+                    <p>
+                        Formally, a knot invariant is a function:
+                        \[
+                        f: \{\text{knot diagrams}\} \to S,
+                        \]
+                        where \( S \) is some set (e.g., integers, polynomials, groups), and \( f \) satisfies the property:
+                        \[
+                        f(D_1) = f(D_2)
+                        \]
+                        whenever \( D_1 \) and \( D_2 \) represent the same knot in \( \mathbb{R}^3 \). In other words, 
+                        the value of the invariant is the same for all diagrams of the same knot.
+                    </p>
+                    <p>
+                        Knot invariants are powerful tools because they help classify knots and distinguish 
+                        between knots that might appear similar but are topologically different.
+                    </p>
+            
+                    <h4>Examples of Knot Invariants</h4>
+                    <p>
+                        Here are some common examples of knot invariants:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>Knot Group:</strong> The fundamental group of the knot complement, denoted \( \pi_1(S^3 \setminus K) \), 
+                            is a group that encodes information about the knot.
+                        </li>
+                        <li>
+                            <strong>Knot Polynomials:</strong> Polynomial invariants, such as:
+                            <ul>
+                                <li>
+                                    <strong>Alexander Polynomial:</strong> A polynomial invariant denoted \( \Delta_K(t) \).
+                                </li>
+                                <li>
+                                    <strong>Jones Polynomial:</strong> A polynomial invariant denoted \( V_K(t) \).
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Knot Signature:</strong> A numerical invariant derived from the Seifert matrix of the knot.
+                        </li>
+                    </ul>
+            
+            
+                    <h4>Relation to Reidemeister Moves</h4>
+                    <p>
+                        Since knot invariants are preserved under Reidemeister moves, they serve as 
+                        a consistent measure of a knot's properties regardless of its diagram representation. 
+                        This is critical for proving that two knots are the same or different.
+                    </p>
+                    <p>
+                        For example, if \( f \) is a knot invariant and \( f(D_1) \neq f(D_2) \), 
+                        then \( D_1 \) and \( D_2 \) cannot represent the same knot.
+                    </p>
+
+                    <h3>Knot complement</h3>
+
+                    <p>
+                        In mathematics, the <strong>knot complement</strong> of a tame knot \( K \) (a knot equivalent to a polygonal knot, knots which are not tame are called wild knots) is the space 
+                        where the knot is not. Informally, it refers to the remaining space in the ambient 
+                        3-dimensional manifold after removing the knot and the space immediately surrounding it.
+                    </p>
+                    <p>
+                        To formalize this, suppose that \( K \) is a knot embedded in a 3-manifold \( M \) (most commonly \( M \) is the 3-sphere, \( S^3 \)). 
+                        Let \( N \) be a tubular neighborhood of \( K \), so \( N \) is homeomorphic to a solid torus. 
+                        The knot complement is then defined as:
+                        \[
+                        X_K = M - \text{interior}(N),
+                        \]
+                        where \( \text{interior}(N) \) represents the interior of the tubular neighborhood \( N \).
+                    </p>
+                    <p>
+                        The knot complement \( X_K \) is a compact 3-manifold, and its boundary, \( \partial X_K \), 
+                        is homeomorphic to a 2-torus (\( T^2 \)). This means that the boundary of the complement is 
+                        topologically the same as the boundary of the neighborhood \( N \), which is also a 2-torus.
+                    </p>
+                
+                    <h4>Relation to Knot Invariants</h4>
+                    <p>
+                        Many <strong>knot invariants</strong> are fundamentally invariants of the knot complement. 
+                        For example:
+                        <ul>
+                            <li>
+                                The <strong>knot group</strong>, \( \pi_1(X_K) \), is the fundamental group of the knot complement.
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        When the ambient space \( M \) is the 3-sphere (\( S^3 \)), no information is lost by studying the complement 
+                        rather than the knot itself. The Gordon–Luecke theorem states:
+                        </p>
+                        <blockquote>
+                            If \( K \) and \( K' \) are two knots with homeomorphic complements, then there exists a homeomorphism of 
+                            \( S^3 \) that takes \( K \) to \( K' \).
+                        </blockquote>
+                        <p>
+                        In other words, a knot is uniquely determined by its complement in \( S^3 \).
+                    </p>
+            
+                    <h4>Generalization to Links</h4>
+                    <p>
+                        The concept of the knot complement generalizes naturally to <strong>link complements</strong>. 
+                        For a link (a collection of knots), the complement is defined analogously by removing the 
+                        interior of a tubular neighborhood of all the components of the link. 
+                    </p>
+                    <p>
+                        Complements of knots and links are examples of <em>Haken manifolds</em>, which are compact 3-manifolds 
+                        that satisfy certain topological properties, making them well-suited for analysis in 3-manifold topology.
+                    </p>
+                </section>
+
+                    <section id="knot-group">
+                    <h3>Knot Group</h3>
+                    <p> the <a href="#" onclick="navigateToSection('topology-fundamental-group')">fundamental group</a></p>
+                    <img src="imagenes/BraidGroupFibration-230205.png" alt="Cobordism" style="width: 600px; display: block; margin: 0 auto;">
+
+                    <div style="height: 1000px;"></div>
+                
+                </section>
+                    <section id="the-bracket-polynomial">
+                    <h3>The bracket polynomial</h3>
+
+                    <div style="height: 1000px;"></div>
+
+                </section>
+                    <section id="the-jones-polynomial">
+                    <h3>The Jones polynomial</h3>
+
+                    <div style="height: 1000px;"></div>
+
+                </section>
+                    <section id="taits-conjectures">
+                    <h3>Tait's conjectures</h3>
+
+                    <div style="height: 1000px;"></div>
+
+                </section>
+                    <section id="the-oriented-state-model">
+                    <h3>The oriented state model</h3>
+
+                    <div style="height: 1000px;"></div>
+
+                </section>
+                    <section id="alexanders-polynomial">
+                    <h3>Alexander's polynomial</h3>
+
+                    <div style="height: 1000px;"></div>
+
+                </section>
+                    <section id="finite-type-invariants">
+                    <h3>Finite type invariants</h3>
+
+                    <div style="height: 1000px;"></div>
+
+                </section>
+
+                <section id="knotted-macromolecules">
+                    <h3>Knotted macromolecules</h3>
+
+                    <div style="height: 1000px;"></div>
+
+                </section>
+
+                <section id="applications-to-nanobiophysics">
+                    <h3>Applications in Nanobiophysics</h3>
+
+                    <div style="height: 1000px;"></div>
+
+                </section>
+
+                </div>
+
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <span>Index</span>
+                    <button class="back-to-top" onclick="scrollToTop()">↑ Top</button>
+                </div>
+                <ul>
+                    <li><a href="#knots-and-links">Knots and Links</a></li>
+                    <li><a href="#knot-diagrams">Knot Diagrams</a></li>
+                    <li><a href="#knot-invariants">Knot Invariants</a></li>
+                    <li><a href="#knot-group">Knot Group</a></li>
+                    <li><a href="#the-bracket-polynomial">The bracket polynomial</a></li>
+                    <li><a href="#the-jones-polynomial">The Jones polynomial</a></li>
+                    <li><a href="#taits-conjectures">Tait's conjectures</li>
+                    <li><a href="#the-oriented-state-model">The oriented state model</a></li>
+                    <li><a href="#alexanders-polynomial">Alexander's polynomial</a></li>
+                    <li><a href="#finite-type-invariants">Finite type invariants</a></li>
+                    <li><a href="#knotted-macromolecules">Knotted macromolecules</a></li>
+                    <li><a href="#applications-to-nanobiophysics">Applications to Nanobiophysics</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="stochastic-analysis" class="section">
+        <h2>Stochastic Analysis</h2>
+        <p>Detailed information about Stochastic Analysis...</p>
+    </div>
+
+    <div id="gauge-theory" class="section">
+        <h2>Gauge Theory</h2>
+        <p>Detailed information about Gauge Theory...</p>
+    </div>
+
+    <div id="fractal-geometry" class="section">
+        <h2>Fractal Geometry</h2>
+        <p>Detailed information about Gauge Theory...</p>
+    </div>
+    
+    <div id="elliptic-functions" class="section">
+        <h2>Elliptic functions</h2>
+        <p>Detailed information about Gauge Theory...</p>
+    </div>
+
+    <div id="graph-theory" class="section">
+        <h2>Graph Theory</h2>
+        <p>Detailed information about Gauge Theory...</p>
+    </div>
+    
+    <div id="differential-topology" class="section">
+        <h2>Differential Topology</h2>
+        <p>Detailed information about Gauge Theory...</p>
+    </div>
+    
+    <div id="algebraic-topology" class="section">
+        <h2>Algebraic Topology</h2>
+
+        <h3>Topological Spaces</h3>
+
+        <h3 id="topology-fundamental-group">Fundamental Group</h3>
+
+        <h3>Covering Spaces</h3>
+
+        <h3>Elementary Homotopy Theory</h3>
+
+        <h3>Cofibrations and Fibrations</h3>
+
+        <h3>Homotopy Groups</h3>
+
+        <h3>Stable Homotopy. Duality</h3>
+
+        <h3>Cell Complexes</h3>
+
+        <h3>Singular Homology</h3>
+
+        <h3>Homology</h3>
+
+        <h3>Homological Algebra</h3>
+
+        <h3>Cellular Homology</h3>
+
+        <h3>Partitions of Unity in Homotopy Theory</h3>
+
+        <h3>Bundles</h3>
+
+        <h3>Manifolds</h3>
+
+        <h3>Cohomology</h3>
+
+        <h3>Duality</h3>
+
+        <h3>Characteristic Classes</h3>
+
+        <h3>Homology and Homotopy</h3>
+
+        <h3>Bordism</h3>
+        
+    </div>
+
+    <div id="statistical-mechanics" class="section">
+        <h2>Statistical mechanics</h2>
+        <p>Detailed information about Gauge Theory...</p>
+    </div>
+    
+    <div id="fluid-dynamics" class="section">
+        <h2>Fluid dynamics</h2>
+        <p>Detailed information about Gauge Theory...</p>
+    </div>
+    
+    <div id="quantum-mechanics" class="section">
+        <h2>Quantum mechanics</h2>
+        <p>Detailed information about Gauge Theory...</p>
+    </div>
+
+    <script>
+        function navigateToSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+<script>
+    document.querySelectorAll('.index-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+
+            document.querySelectorAll('.index-link').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            this.classList.add('active');
+        });
+    });
+
+    // Highlight active section in sidebar on scroll
+    window.addEventListener('scroll', () => {
+        let sections = document.querySelectorAll('.content h3');
+        let scrollPosition = window.scrollY + 100; 
+
+        sections.forEach(sec => {
+            let sectionTop = sec.offsetTop;
+            let sectionId = sec.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop) {
+                document.querySelectorAll('.index-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.querySelector(`.index-link[href="#${sectionId}"]`).classList.add('active');
+            }
+        });
+    });
+</script>
+
+<script>
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth", // Desplazamiento suave
+        });
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll("section"); // Todas las secciones
+        const navLinks = document.querySelectorAll(".sidebar ul li a"); // Todos los enlaces del índice
+
+        // Usamos IntersectionObserver para detectar qué sección está visible
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Encuentra el enlace correspondiente al ID de la sección visible
+                        const activeLink = document.querySelector(
+                            `.sidebar ul li a[href="#${entry.target.id}"]`
+                        );
+
+                        // Elimina la clase "active" de todos los enlaces
+                        navLinks.forEach((link) => link.classList.remove("active"));
+
+                        // Agrega la clase "active" al enlace correspondiente
+                        activeLink.classList.add("active");
+                    }
+                });
+            },
+            { threshold: 0.2 } // La sección debe estar al menos un 60% visible
+        );
+
+        // Observa cada sección
+        sections.forEach((section) => observer.observe(section));
+
+        // Suavizado al hacer clic en un enlace del índice
+        navLinks.forEach((link) => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault(); // Prevenimos el comportamiento por defecto
+                const targetId = link.getAttribute("href").slice(1); // Obtenemos el ID de destino
+                const targetSection = document.getElementById(targetId);
+
+                // Desplazamiento suave a la sección
+                targetSection.scrollIntoView({
+                    behavior: "smooth",
+                });
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>
